@@ -1,0 +1,12 @@
+{"code": "from flask import request\ndef h():\n    os.system(request.args.get('cmd'))\n", "file": "v1_flask_ossystem_args.py", "id": "v1_flask_ossystem_args_L3", "label": "FLAG", "line": 3, "spurious": false}
+{"code": "from flask import request\nimport subprocess\ndef h():\n    subprocess.run(request.form['c'], shell=True)\n", "file": "v2_flask_subprocess_shell_form.py", "id": "v2_flask_subprocess_shell_form_L4", "label": "FLAG", "line": 4, "spurious": false}
+{"code": "def h():\n    return os.popen(input()).read()\n", "file": "v3_input_ospopen.py", "id": "v3_input_ospopen_L2", "label": "FLAG", "line": 2, "spurious": false}
+{"code": "import sys, subprocess\ndef h():\n    subprocess.call(sys.argv[1], shell=True)\n", "file": "v4_argv_subprocess_call_shell.py", "id": "v4_argv_subprocess_call_shell_L3", "label": "FLAG", "line": 3, "spurious": false}
+{"code": "def h(request):\n    os.system(request.GET['q'])\n", "file": "v5_django_ossystem_get.py", "id": "v5_django_ossystem_get_L2", "label": "FLAG", "line": 2, "spurious": false}
+{"code": "import os\ndef h():\n    os.system(os.environ['CMD'])\n", "file": "v6_env_ossystem.py", "id": "v6_env_ossystem_L3", "label": "SAFE", "line": 3, "spurious": false}
+{"code": "from flask import request\nimport subprocess\ndef h():\n    subprocess.run(['ls', request.args.get('d')])\n", "file": "s1_subprocess_list_noshell.py", "id": "s1_subprocess_list_noshell_L4", "label": "SAFE", "line": 4, "spurious": false}
+{"code": "from flask import request\nimport shlex, os\ndef h():\n    os.system('ls ' + shlex.quote(request.args.get('d')))\n", "file": "s2_shlex_quote_ossystem.py", "id": "s2_shlex_quote_ossystem_L4", "label": "SAFE", "line": 4, "spurious": false}
+{"code": "import os\ndef h():\n    os.system('ls -la /tmp')\n", "file": "s3_ossystem_constant.py", "id": "s3_ossystem_constant_L3", "label": "SAFE", "line": 3, "spurious": false}
+{"code": "from flask import request\ndef h():\n    return int(request.args.get('n'))\n", "file": "s4_request_int_nosink.py", "id": "s4_request_int_nosink_L3", "label": "SAFE", "line": 3, "spurious": false}
+{"code": "def h(user):\n    if user in {'alice', 'bob'}:\n        return user\n    return None\n", "file": "s5_allowlist_no_sink.py", "id": "s5_allowlist_no_sink_L4", "label": "SAFE", "line": 4, "spurious": false}
+{"code": "import subprocess\ndef h():\n    subprocess.run(['echo', input()])\n", "file": "s6_input_subprocess_list.py", "id": "s6_input_subprocess_list_L3", "label": "SAFE", "line": 3, "spurious": false}
